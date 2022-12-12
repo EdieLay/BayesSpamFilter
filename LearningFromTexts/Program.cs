@@ -1,16 +1,16 @@
 ﻿
 Dictionary<string, SpamHamFreq> wordfreq = new Dictionary<string, SpamHamFreq>(); // словарь слов с их частотами появления в спаме и хаме
 
-using (var reader = new StreamReader("spamdb.txt", System.Text.Encoding.Default)) // файл с письмами
+using (var reader = new StreamReader("../../../../spamdb.txt", System.Text.Encoding.Default)) // файл с письмами
 {
-    using (var writer = new StreamWriter("wordfreq.txt", false, System.Text.Encoding.Default)) // конечный файл со словами и их повторениями
+    using (var writer = new StreamWriter("../../../../wordfreq.txt", false, System.Text.Encoding.Default)) // конечный файл со словами и их повторениями
     {
-        string line;
+        string? line;
         string[] words;
-        char[] separators = new char[] { ' ', ',', '.', '-', '(', ')', '/', ':', ';', '!', '?', '*', '"', '>' };
+        char[] separators = new char[] { ' ', ',', '.', '-', '(', ')', '/', ':', ';', '!', '?', '*', '"', '>', '<', '\'', '`' };
         bool isnotrussian = false; // для определения, является ли буква русской
 
-        while ((line = reader.ReadLine()) != null) // считываем строчки, у которых начало либо "Мэри,...", либо "спам,..."
+        while ((line = await reader.ReadLineAsync()) != null) // считываем строчки, у которых начало либо "Мэри,...", либо "спам,..."
         { 
             if (line[0] == 'М') // если начинается на М, то это не спам
             {
@@ -59,11 +59,11 @@ using (var reader = new StreamReader("spamdb.txt", System.Text.Encoding.Default)
         var select = wordfreq.OrderBy(a => a.Key);
 
         double spamfreq, hamfreq;
-        foreach (var word in select)
+        foreach (var word in select) // считаем относитульную вероятность встречи слова для каждого типа сообщений
         {
-            spamfreq = ((double)word.Value.met_in_spam / (double)SpamHamFreq.num_of_spam);
-            hamfreq = ((double)word.Value.met_in_ham / (double)SpamHamFreq.num_of_ham);
-            writer.WriteLine($"{word.Key};{spamfreq:F8};{hamfreq:F8}");
+            spamfreq = (((double)word.Value.met_in_spam + 1) / ((double)SpamHamFreq.num_of_spam + 2)); // добавляем 1 в числитель и 2 в знаменатель
+            hamfreq = (((double)word.Value.met_in_ham + 1) / ((double)SpamHamFreq.num_of_ham + 2));    // чтобы не было нулевых вероятностей
+            await writer.WriteLineAsync($"{word.Key};{spamfreq};{hamfreq}");
         }
     }
     
