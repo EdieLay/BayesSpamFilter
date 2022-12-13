@@ -57,6 +57,8 @@ string[] Derivational = {
 
 string s1 = "красивейшая";
 Console.WriteLine(PorterStemmer(s1));
+string s2 = "ВфеькмёьиЁв";
+Console.WriteLine(WordProcessing(s2));
 
 string PorterStemmer(string word)
 {
@@ -80,7 +82,7 @@ string PorterStemmer(string word)
 
 
 
-    if (GetR1fromRV(RV, out string R1) & GetRV(R1, out string R2) & GetR1fromRV(R2, out R2)) // GetR1fromRV(R2, out R2) - область R1 после первого сочетания "гласная - согласная"
+    if (GetR1fromRV(RV, out string R1) & GetRV(R1, out string R2) & GetR1fromRV(R2, out R2)) // GetR1fromRV(R2, out R2) - область R1 после первого сочетания "гласная-согласная"
     {
         Console.WriteLine($"RV {RV}");
         Console.WriteLine($"R1 {R1}");
@@ -178,4 +180,10 @@ bool DeleteEnding(ref string RV, string[] ending)
     Console.WriteLine($"DeleteEnding {ending[0]}: max {max} | RV[^max..] {RV}");
 
     if (max > 0) return true; return false;
+}
+
+    
+string WordProcessing(string word)
+{
+    return word = word.ToLower().Replace("ё", "е");
 }
