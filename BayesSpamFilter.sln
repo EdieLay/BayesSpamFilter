@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningFromTexts", "LearningFromTexts\LearningFromTexts.csproj", "{88F6D356-0084-4F78-8318-B50476916BE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpamFilter", "SpamFilter\SpamFilter.csproj", "{02223FBA-914A-4A80-94CB-6E9F6E414853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpamFilter", "SpamFilter\SpamFilter.csproj", "{02223FBA-914A-4A80-94CB-6E9F6E414853}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StemmPorter", "StemmPorter\StemmPorter.csproj", "{0DB2A98D-3FAD-4840-9072-FDDC0CB3EA48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{02223FBA-914A-4A80-94CB-6E9F6E414853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02223FBA-914A-4A80-94CB-6E9F6E414853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02223FBA-914A-4A80-94CB-6E9F6E414853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DB2A98D-3FAD-4840-9072-FDDC0CB3EA48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB2A98D-3FAD-4840-9072-FDDC0CB3EA48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB2A98D-3FAD-4840-9072-FDDC0CB3EA48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB2A98D-3FAD-4840-9072-FDDC0CB3EA48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
